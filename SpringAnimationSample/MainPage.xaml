@@ -1,0 +1,43 @@
+﻿<Page x:Class="SpringAnimationSample.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:SpringAnimationSample"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
+
+    <Grid x:Name="Root">
+
+        <Border x:Name="Image3"
+                Width="240"
+                Height="240"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                CornerRadius="40"
+                Opacity="0.9"
+                PointerPressed="OnPointerPressed">
+            <Image Source="ms-appx:///Assets/3.jpg" Stretch="UniformToFill" />
+        </Border>
+        <Border x:Name="Image2"
+                Width="240"
+                Height="240"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                CornerRadius="40"
+                Opacity="0.9"
+                PointerPressed="OnPointerPressed">
+            <Image Source="ms-appx:///Assets/2.jpg" Stretch="UniformToFill" />
+        </Border>
+        <Border x:Name="Image1"
+                Width="240"
+                Height="240"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                CornerRadius="40"
+                Opacity="0.9"
+                PointerPressed="OnPointerPressed">
+            <Image Source="ms-appx:///Assets/1.jpg" Stretch="UniformToFill" />
+        </Border>
+    </Grid>
+</Page>
