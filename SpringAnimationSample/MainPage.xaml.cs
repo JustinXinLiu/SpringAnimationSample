@@ -47,8 +47,14 @@ namespace SpringAnimationSample
 
             var tracker = InteractionTracker.Create(_compositor);
             tracker.InteractionSources.Add(_interactionSource);
-            tracker.MaxPosition = new Vector3(Root.RenderSize.ToVector2(), 0.0f);
-            tracker.MinPosition = -tracker.MaxPosition;
+
+            UpdateTrackingZone(tracker, Root);
+            Root.SizeChanged += (sender, e) =>
+            {
+                if (e.PreviousSize.Equals(e.NewSize)) return;
+
+                UpdateTrackingZone(tracker, Root);
+            };
 
             var modifier = InteractionTrackerInertiaNaturalMotion.Create(_compositor);
             var springAnimation = _compositor.CreateSpringScalarAnimation();
@@ -66,6 +72,12 @@ namespace SpringAnimationSample
 
             var imageVisual = ElementCompositionPreview.GetElementVisual(element);
             imageVisual.StartAnimation("Translation", -tracker.GetReference().Position);
+        }
+
+        private void UpdateTrackingZone(InteractionTracker tracker, UIElement rootZone)
+        {
+            tracker.MaxPosition = new Vector3(rootZone.RenderSize.ToVector2() / 2, 0.0f);
+            tracker.MinPosition = -tracker.MaxPosition;
         }
 
         private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
